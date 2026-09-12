@@ -1,7 +1,7 @@
 export const profile = {
   name: "Mrittika Sarkar",
   role: "React Native Developer",
-  tagline: "4+ Years Experience",
+  tagline: "4 Years Experience",
   location: "Kolkata, India",
   email: "mrittikasarkar123@gmail.com",
   phone: "+91 7864807035",

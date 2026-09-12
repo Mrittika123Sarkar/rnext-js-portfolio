@@ -26,11 +26,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "Mrittika Sarkar — React Native Developer",
   description:
-    "React Native Developer with 4+ years of experience building cross-platform mobile applications for iOS and Android.",
+    "React Native Developer with 4 years of experience building cross-platform mobile applications for iOS and Android.",
   openGraph: {
     title: "Mrittika Sarkar — React Native Developer",
     description:
-      "React Native Developer with 4+ years of experience building cross-platform mobile applications for iOS and Android.",
+      "React Native Developer with 4 years of experience building cross-platform mobile applications for iOS and Android.",
     url: siteUrl,
     siteName: "Mrittika Sarkar",
     type: "website",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Mrittika Sarkar — React Native Developer",
     description:
-      "React Native Developer with 4+ years of experience building cross-platform mobile applications for iOS and Android.",
+      "React Native Developer with 4 years of experience building cross-platform mobile applications for iOS and Android.",
   },
 };
 

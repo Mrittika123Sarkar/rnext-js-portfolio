@@ -2,7 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Check, Mail, Phone } from "lucide-react";
+import { Check, Mail, MessageCircle, Phone } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/icons";
 import { SectionHeading } from "@/components/section-heading";
 import { profile } from "@/lib/data";
@@ -37,9 +37,18 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24">
+    <section id="contact" className="relative overflow-hidden py-24">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -bottom-32 -right-20 -z-10 h-80 w-80 rounded-full opacity-25 blur-3xl"
+        style={{ background: "var(--accent)" }}
+      />
       <div className="container-x">
-        <SectionHeading eyebrow="Contact" title="Let's work together" />
+        <SectionHeading
+          eyebrow="Contact"
+          title="Let's work together"
+          icon={MessageCircle}
+        />
 
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
           <motion.div

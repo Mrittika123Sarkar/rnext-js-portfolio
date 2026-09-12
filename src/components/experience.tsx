@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
+import { Briefcase } from "lucide-react";
 import { SectionHeading } from "@/components/section-heading";
 import { experiences } from "@/lib/data";
 
@@ -20,7 +21,11 @@ export function Experience() {
   return (
     <section id="experience" className="border-b border-[var(--border)] py-24">
       <div className="container-x">
-        <SectionHeading eyebrow="Experience" title="Where I've worked" />
+        <SectionHeading
+          eyebrow="Experience"
+          title="Where I've worked"
+          icon={Briefcase}
+        />
 
         <div ref={ref} className="relative pl-8 sm:pl-10">
           <div className="absolute left-0 top-0 bottom-0 w-px bg-[var(--border)]" />
