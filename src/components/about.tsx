@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { animate, motion, useInView } from "framer-motion";
 import { SectionHeading } from "@/components/section-heading";
 import { profile, education, certifications, languages, interests } from "@/lib/data";
 
@@ -9,6 +10,32 @@ const stats = [
   { label: "Companies", value: "3" },
   { label: "Platforms", value: "iOS & Android" },
 ];
+
+function Stat({ value }: { value: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-40px" });
+  const [display, setDisplay] = useState(value.replace(/\d+/, "0"));
+  const match = value.match(/^(\d+)(.*)$/);
+
+  useEffect(() => {
+    if (!inView || !match) return;
+    const target = Number(match[1]);
+    const suffix = match[2];
+    const controls = animate(0, target, {
+      duration: 1.1,
+      ease: [0.22, 1, 0.36, 1],
+      onUpdate: (v) => setDisplay(`${Math.round(v)}${suffix}`),
+    });
+    return () => controls.stop();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inView, value]);
+
+  return (
+    <div ref={ref} className="text-2xl sm:text-3xl font-semibold tracking-tight">
+      {match ? display : value}
+    </div>
+  );
+}
 
 export function About() {
   return (
@@ -30,9 +57,7 @@ export function About() {
             <div className="mt-10 grid grid-cols-3 gap-6">
               {stats.map((s) => (
                 <div key={s.label}>
-                  <div className="text-2xl sm:text-3xl font-semibold tracking-tight">
-                    {s.value}
-                  </div>
+                  <Stat value={s.value} />
                   <div className="mt-1 text-xs sm:text-sm text-[var(--muted)]">
                     {s.label}
                   </div>
@@ -42,7 +67,10 @@ export function About() {
 
             <div className="mt-10 grid gap-6 sm:grid-cols-2">
               <div>
-                <h3 className="mb-3 text-sm font-mono uppercase tracking-wide text-[var(--muted)]">
+                <h3
+                  className="mb-3 text-base italic text-[var(--muted)]"
+                  style={{ fontFamily: "var(--font-serif)" }}
+                >
                   Education
                 </h3>
                 <ul className="space-y-3">
@@ -58,7 +86,10 @@ export function About() {
                 </ul>
               </div>
               <div>
-                <h3 className="mb-3 text-sm font-mono uppercase tracking-wide text-[var(--muted)]">
+                <h3
+                  className="mb-3 text-base italic text-[var(--muted)]"
+                  style={{ fontFamily: "var(--font-serif)" }}
+                >
                   Certifications
                 </h3>
                 <ul className="space-y-2 text-sm text-[var(--muted)]">
@@ -67,7 +98,10 @@ export function About() {
                   ))}
                 </ul>
 
-                <h3 className="mb-3 mt-6 text-sm font-mono uppercase tracking-wide text-[var(--muted)]">
+                <h3
+                  className="mb-3 mt-6 text-base italic text-[var(--muted)]"
+                  style={{ fontFamily: "var(--font-serif)" }}
+                >
                   Languages
                 </h3>
                 <p className="text-sm text-[var(--muted)]">{languages.join(", ")}</p>
@@ -80,10 +114,13 @@ export function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-8"
+            className="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-8"
           >
-            <h3 className="text-sm font-mono uppercase tracking-wide text-[var(--muted)]">
-              Quick Facts
+            <h3
+              className="text-base italic text-[var(--muted)]"
+              style={{ fontFamily: "var(--font-serif)" }}
+            >
+              Quick facts
             </h3>
             <dl className="mt-6 space-y-4 text-sm">
               <div className="flex justify-between gap-4 border-b border-[var(--border)] pb-3">

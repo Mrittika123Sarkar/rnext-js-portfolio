@@ -6,9 +6,9 @@ export const profile = {
   email: "mrittikasarkar123@gmail.com",
   phone: "+91 7864807035",
   linkedin: "https://linkedin.com/in/mrittika-sarkar-0ab393259",
-  github: "https://github.com/",
+  github: "https://github.com/Mrittika123Sarkar",
   summary:
-    "React Native Developer with 4+ years of professional application development experience, specializing in cross-platform mobile applications for iOS and Android. Strong experience in React Native, JavaScript, ReactJS, REST APIs, JSON, Git/GitLab/GitHub, debugging, performance optimization, and Agile delivery. Experienced in translating UI/UX designs into responsive mobile components, integrating backend services, resolving production issues, and collaborating with design, product, and engineering teams.",
+    "I've spent the last four years shipping React Native apps that real people use on the App Store and Google Play — from Bhooter Raja Dilo Bor and Hatari at Grey Matter Technology to the Pronti User and Driver apps I currently work on. Most days that means turning a Figma file into working screens, wiring it up to a REST API, and then chasing down the one bug that only shows up on a mid-range Android phone. I care more about an app feeling solid than about the tech stack behind it.",
 };
 
 export type SkillGroup = {
@@ -51,8 +51,8 @@ export const experiences: Experience[] = [
   {
     company: "Pronti",
     role: "Application Developer",
-    period: "Sep 2025 – Sep 2026",
-    duration: "1 year",
+    period: "Feb 2026 – Present",
+    duration: "7 months",
     bullets: [
       "Developed and maintained React Native mobile applications for iOS and Android.",
       "Integrated REST APIs and backend services to support application functionality.",
@@ -64,7 +64,7 @@ export const experiences: Experience[] = [
   {
     company: "Grey Matter Technology",
     role: "Application Developer",
-    period: "Sep 2023 – Sep 2025",
+    period: "Jan 2024 – Feb 2026",
     duration: "2 years",
     bullets: [
       "Developed and optimized cross-platform mobile application features using React Native for iOS and Android.",
@@ -77,7 +77,7 @@ export const experiences: Experience[] = [
   {
     company: "Webskitters Technologies Private Ltd.",
     role: "Application Developer",
-    period: "Sep 2022 – Sep 2023",
+    period: "Nov 2022 – Dec 2023",
     duration: "1 year",
     bullets: [
       "Developed, tested, and maintained React Native mobile applications for iOS and Android.",

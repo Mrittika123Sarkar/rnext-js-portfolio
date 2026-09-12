@@ -23,13 +23,20 @@ export function Projects() {
             <button
               key={tag}
               onClick={() => setFilter(tag)}
-              className={`rounded-full border px-4 py-1.5 text-sm transition-colors ${
+              className={`relative rounded-full border px-4 py-1.5 text-sm transition-colors ${
                 filter === tag
-                  ? "border-[var(--accent)] bg-[var(--accent)] text-[var(--accent-foreground)]"
+                  ? "border-[var(--accent)] text-[var(--accent-foreground)]"
                   : "border-[var(--border)] text-[var(--muted)] hover:text-[var(--foreground)]"
               }`}
             >
-              {tag}
+              {filter === tag && (
+                <motion.span
+                  layoutId="project-filter-pill"
+                  transition={{ type: "spring", stiffness: 400, damping: 32 }}
+                  className="absolute inset-0 rounded-full bg-[var(--accent)]"
+                />
+              )}
+              <span className="relative">{tag}</span>
             </button>
           ))}
         </div>
@@ -43,11 +50,17 @@ export function Projects() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -16 }}
+                whileHover={{ y: -4 }}
                 transition={{ duration: 0.35 }}
-                className="group rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6 transition-colors hover:border-[var(--accent)]"
+                className="group rounded-lg border border-[var(--border)] bg-[var(--surface)] p-6 transition-shadow hover:bg-[var(--surface-2)] hover:shadow-lg hover:shadow-black/5"
               >
                 <div className="flex items-start justify-between gap-4">
-                  <h3 className="text-lg font-semibold">{project.name}</h3>
+                  <h3
+                    className="text-lg"
+                    style={{ fontFamily: "var(--font-serif)", fontWeight: 500 }}
+                  >
+                    {project.name}
+                  </h3>
                 </div>
                 <p className="mt-1 text-xs font-mono text-[var(--accent)]">
                   {project.company}

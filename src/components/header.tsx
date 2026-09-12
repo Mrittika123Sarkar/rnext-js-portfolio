@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { motion, useScroll, useSpring } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 
@@ -15,6 +16,12 @@ const links = [
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, {
+    stiffness: 280,
+    damping: 32,
+    mass: 0.4,
+  });
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -31,6 +38,10 @@ export function Header() {
           : "bg-transparent"
       }`}
     >
+      <motion.div
+        style={{ scaleX: progress }}
+        className="absolute inset-x-0 top-0 h-[2px] origin-left bg-[var(--accent)]"
+      />
       <div className="container-x flex h-16 items-center justify-between">
         <a href="#hero" className="font-mono text-sm font-semibold tracking-tight">
           mrittika<span className="text-[var(--accent)]">.dev</span>
@@ -41,9 +52,10 @@ export function Header() {
             <a
               key={l.href}
               href={l.href}
-              className="text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+              className="group relative py-1 text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
             >
               {l.label}
+              <span className="absolute inset-x-0 -bottom-0.5 h-px origin-left scale-x-0 bg-[var(--accent)] transition-transform duration-300 group-hover:scale-x-100" />
             </a>
           ))}
         </nav>
@@ -53,7 +65,7 @@ export function Header() {
           <a
             href="/resume.pdf"
             download
-            className="rounded-full bg-[var(--accent)] px-4 py-2 text-sm font-medium text-[var(--accent-foreground)] hover:opacity-90 transition-opacity"
+            className="rounded-md bg-[var(--accent)] px-4 py-2 text-sm font-medium text-[var(--accent-foreground)] hover:opacity-90 transition-opacity"
           >
             Resume
           </a>
@@ -87,7 +99,7 @@ export function Header() {
             <a
               href="/resume.pdf"
               download
-              className="rounded-full bg-[var(--accent)] px-4 py-2 text-sm font-medium text-[var(--accent-foreground)] text-center"
+              className="rounded-md bg-[var(--accent)] px-4 py-2 text-sm font-medium text-[var(--accent-foreground)] text-center"
             >
               Download Resume
             </a>

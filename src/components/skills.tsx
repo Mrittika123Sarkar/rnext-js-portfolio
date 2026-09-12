@@ -18,9 +18,12 @@ export function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.45, delay: i * 0.06 }}
-              className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6 transition-colors hover:border-[var(--accent)]"
+              className="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-6"
             >
-              <h3 className="mb-4 text-sm font-mono uppercase tracking-wide text-[var(--muted)]">
+              <h3
+                className="mb-4 text-base italic text-[var(--muted)]"
+                style={{ fontFamily: "var(--font-serif)" }}
+              >
                 {group.category}
               </h3>
               <div className="flex flex-wrap gap-2">

@@ -1,8 +1,8 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { motion } from "framer-motion";
-import { Mail, Phone } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Check, Mail, Phone } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/icons";
 import { SectionHeading } from "@/components/section-heading";
 import { profile } from "@/lib/data";
@@ -92,7 +92,7 @@ export function Contact() {
             transition={{ duration: 0.5, delay: 0.1 }}
             onSubmit={handleSubmit}
             noValidate
-            className="space-y-5 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6 sm:p-8"
+            className="space-y-5 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-6 sm:p-8"
           >
             <div>
               <label htmlFor="name" className="mb-1.5 block text-sm font-medium">
@@ -142,18 +142,34 @@ export function Contact() {
               )}
             </div>
 
-            <button
+            <motion.button
               type="submit"
+              whileTap={{ scale: 0.98 }}
               className="w-full rounded-lg bg-[var(--accent)] px-5 py-3 text-sm font-medium text-[var(--accent-foreground)] hover:opacity-90 transition-opacity"
             >
               Send Message
-            </button>
+            </motion.button>
 
-            {sent && (
-              <p className="text-center text-xs text-[var(--muted)]">
-                Your email client should now be open with the message ready to send.
-              </p>
-            )}
+            <AnimatePresence>
+              {sent && (
+                <motion.p
+                  initial={{ opacity: 0, y: -6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  className="flex items-center justify-center gap-1.5 text-center text-xs text-[var(--muted)]"
+                >
+                  <motion.span
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ delay: 0.1, type: "spring", stiffness: 400, damping: 20 }}
+                    className="flex h-4 w-4 items-center justify-center rounded-full bg-[var(--accent)] text-[var(--accent-foreground)]"
+                  >
+                    <Check className="h-2.5 w-2.5" />
+                  </motion.span>
+                  Your email client should now be open with the message ready to send.
+                </motion.p>
+              )}
+            </AnimatePresence>
           </motion.form>
         </div>
       </div>

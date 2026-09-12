@@ -17,10 +17,13 @@ export function SectionHeading({
       transition={{ duration: 0.5 }}
       className="mb-10 flex flex-col gap-2"
     >
-      <span className="text-xs font-mono uppercase tracking-[0.2em] text-[var(--accent)]">
+      <span className="text-sm italic text-[var(--accent)]" style={{ fontFamily: "var(--font-serif)" }}>
         {eyebrow}
       </span>
-      <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight">
+      <h2
+        className="text-3xl sm:text-4xl tracking-tight"
+        style={{ fontFamily: "var(--font-serif)", fontWeight: 500 }}
+      >
         {title}
       </h2>
     </motion.div>
